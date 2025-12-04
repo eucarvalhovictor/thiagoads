@@ -91,7 +91,7 @@ const App: React.FC = () => {
           </div>
 
           <div className="flex flex-col items-center gap-4">
-            <Button onClick={scrollToOffer} className="text-xl px-10 py-5 shadow-purple-500/25 shadow-xl animate-pulse-slow">
+            <Button onClick={scrollToOffer} className="text-xl px-10 py-5 shadow-purple-500/25 shadow-xl">
               Quero aprender a lotar minha agenda por R$ 97
             </Button>
             <p className="text-slate-400 text-sm">
