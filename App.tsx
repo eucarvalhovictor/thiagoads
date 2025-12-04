@@ -12,7 +12,14 @@ import {
   BrainCircuit,
   Palette,
   Bot,
-  XCircle
+  XCircle,
+  SquareTerminal, // Added for module icons
+  Search, // Added for Google Ads module
+  Megaphone, // Added for Meta Ads module
+  Focus, // Added for Audience module
+  Zap, // Added for Campaigns module
+  LineChart, // Added for Analysis module
+  Star, // Added for Extra classes
 } from 'lucide-react';
 import { Button } from './components/Button';
 import { Section } from './components/Section';
@@ -33,6 +40,75 @@ const App: React.FC = () => {
     document.getElementById('offer')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const modules = [
+    {
+      icon: <SquareTerminal className="w-8 h-8 text-purple-400" />,
+      title: "Módulo 1 – O Funil do Músico na Prática",
+      description: "Entenda como transformar curiosos em fãs engajados e shows lotados, construindo uma base sólida para sua carreira musical.",
+      topics: [
+        "Transformando curiosos em fãs fiéis",
+        "A oferta irresistível do músico para seu público",
+        "Estratégias para criar um cronograma de conteúdo vencedor",
+        "Desenvolvendo o mindset do músico empreendedor"
+      ]
+    },
+    {
+      icon: <Search className="w-8 h-8 text-blue-400" />,
+      title: "Módulo 2 – Google Ads Essencial para Artistas",
+      description: "Domine o Google Ads para alcançar seu público onde ele busca por música, shows e artistas como você, otimizando sua visibilidade online.",
+      topics: [
+        "Configurações essenciais para traqueamento (Pixel, GA4)",
+        "Google Tag Manager para músicos: instalação e uso",
+        "Eventos e Acionadores no GTM para monitoramento preciso",
+        "Configurações da conta Google Ads para Músicos: passo a passo"
+      ]
+    },
+    {
+      icon: <Megaphone className="w-8 h-8 text-pink-400" />,
+      title: "Módulo 3 – Meta Ads: Presença Forte no Facebook e Instagram",
+      description: "Construa sua presença digital no Facebook e Instagram, criando campanhas eficazes para engajar sua audiência e converter interesse em ação.",
+      topics: [
+        "Configuração prática de Gerenciador de Negócios e Conta de Anúncios",
+        "Criando sua página de artista no Facebook para anúncios de sucesso",
+        "Primeiros passos no Instagram para tráfego pago eficiente",
+        "Estruturando seu portfólio de anúncios visuais e de vídeo"
+      ]
+    },
+    {
+      icon: <Focus className="w-8 h-8 text-green-400" />,
+      title: "Módulo 4 – Segmentação Inteligente de Público no Meta Ads",
+      description: "Aprenda a criar públicos personalizados e lookalikes para falar diretamente com quem realmente se importa com sua arte, maximizando o impacto de suas campanhas.",
+      topics: [
+        "Criando públicos personalizados (site, engajamento, lista de clientes)",
+        "Estratégias de segmentação eficazes para músicos",
+        "Construção de lista de contatos para contratantes",
+        "Remanejamento e aquisição de novos fãs: táticas avançadas"
+      ]
+    },
+    {
+      icon: <Zap className="w-8 h-8 text-yellow-400" />,
+      title: "Módulo 5 – Campanhas Otimizadas e Estratégias de Sucesso",
+      description: "Escolha os objetivos certos e desenvolva estratégias poderosas para cada etapa do funil do seu público, garantindo o máximo retorno sobre seu investimento.",
+      topics: [
+        "Objetivos de campanhas e utilizações no Meta Ads",
+        "Estratégias de campanha para aumentar o engajamento",
+        "Campanhas de conversão: do play no Spotify ao ingresso comprado",
+        "Planejamento de orçamento e lances para diferentes cenários"
+      ]
+    },
+    {
+      icon: <LineChart className="w-8 h-8 text-red-400" />,
+      title: "Módulo 6 – Criação, Análise e Otimização Contínua",
+      description: "Da criação à otimização, domine o ciclo completo de suas campanhas para garantir resultados consistentes e crescer sua carreira de forma sustentável.",
+      topics: [
+        "Como subir campanhas do zero e analisar métricas essenciais",
+        "Identificando KPIs cruciais para músicos: o que realmente importa",
+        "Técnicas de otimização para maximizar o ROI e alcance",
+        "Como criar uma campanha de marketing completa para músicos"
+      ]
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 selection:bg-purple-500 selection:text-white font-sans">
       
@@ -43,14 +119,14 @@ const App: React.FC = () => {
             <div className="bg-gradient-to-tr from-purple-600 to-pink-500 p-1.5 rounded-lg shadow-lg shadow-purple-900/20">
               <Music className="w-5 h-5 text-white" />
             </div>
-            <span>Músico<span className="text-purple-400">Ads</span></span>
+            <span>Réssonancia</span>
           </div>
           <div className={`${showStickyCTA ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'} transition-all duration-300`}>
              <button 
                 onClick={scrollToOffer}
                 className="bg-green-500 hover:bg-green-400 text-slate-900 text-sm font-bold py-2 px-6 rounded-full shadow-lg transition-colors"
              >
-               Quero Lotar a Agenda
+               Quero Minha Réssonancia
              </button>
           </div>
         </div>
@@ -92,7 +168,7 @@ const App: React.FC = () => {
 
           <div className="flex flex-col items-center gap-4">
             <Button onClick={scrollToOffer} className="text-xl px-10 py-5 shadow-purple-500/25 shadow-xl">
-              Quero aprender a lotar minha agenda por R$ 97
+              Quero aprender a atrair fãs com Réssonancia por R$ 97
             </Button>
             <p className="text-slate-400 text-sm">
               Pague menos do que você gastaria em uma saída de bar.
@@ -188,64 +264,56 @@ const App: React.FC = () => {
         </div>
       </Section>
 
-      {/* Curriculum */}
+      {/* New Curriculum Section */}
       <Section>
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">O passo a passo que você vai dominar</h2>
-          <p className="text-slate-400">Nada de teoria solta. Tudo com foco em músico independente.</p>
+          <span className="text-purple-400 font-bold tracking-wider uppercase text-sm">Aprenda na Prática</span>
+          <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">O que você vai aprender em Réssonancia</h2>
+          <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+            Descubra os segredos do tráfego pago para músicos independentes, com um passo a passo claro e direto, focado nos seus resultados.
+          </p>
         </div>
 
-        <div className="max-w-3xl mx-auto space-y-4">
-          <AccordionItem title="Módulo 1 – Funil do músico na prática">
-            <ul className="space-y-2 list-disc list-inside">
-              <li>Transformando curiosos em fãs</li>
-              <li>Oferta do músico</li>
-              <li>Estratégias para criar cronograma de conteúdo</li>
-            </ul>
-          </AccordionItem>
-          
-          <AccordionItem title="Módulo 2 – Google ADS: Configurações Essenciais">
-            <ul className="space-y-2 list-disc list-inside">
-              <li>Configurações essenciais para traqueamento</li>
-              <li>Google Tag Manager para músicos</li>
-              <li>Eventos e Acionadores no GTM</li>
-              <li>Configurações do Google Ads para Músico</li>
-            </ul>
-          </AccordionItem>
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          {modules.map((module, index) => (
+            <div key={index} className="bg-slate-900/50 p-6 rounded-xl border border-slate-800 hover:border-purple-500/30 transition-colors flex flex-col">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="p-3 rounded-lg bg-slate-800/50 flex-shrink-0">
+                  {module.icon}
+                </div>
+                <h3 className="text-xl font-bold text-white">{module.title}</h3>
+              </div>
+              <p className="text-slate-400 mb-5 flex-grow">{module.description}</p>
+              <AccordionItem title="Ver tópicos do módulo">
+                <ul className="space-y-2 list-disc list-inside text-slate-300">
+                  {module.topics.map((topic, i) => (
+                    <li key={i}>{topic}</li>
+                  ))}
+                </ul>
+              </AccordionItem>
+            </div>
+          ))}
 
-          <AccordionItem title="Módulo 3 – Meta ADS: Configurações Essenciais">
-            <ul className="space-y-2 list-disc list-inside">
-              <li>Configuração Prática de Anúncios e Portfólio</li>
-              <li>Conta de Anúncios para Músicos</li>
-              <li>Página para Anúncios no Facebook</li>
-            </ul>
-          </AccordionItem>
-
-          <AccordionItem title="Módulo 4 – Público Personalizado Meta ADS">
-            <ul className="space-y-2 list-disc list-inside">
-              <li>Criando Públicos Personalizados</li>
-              <li>Estratégias de Segmentação Eficazes</li>
-              <li>Estratégias para construção de lista de contratantes</li>
-            </ul>
-          </AccordionItem>
-
-          <AccordionItem title="Módulo 5 – Objetivos de Campanha e Estratégias">
-            <ul className="space-y-2 list-disc list-inside">
-              <li>Objetivos de Campanhas e Utilizações no Meta</li>
-              <li>Estratégias de Campanha para aumentar o engajamento</li>
-            </ul>
-          </AccordionItem>
-
-          <AccordionItem title="Módulo 6 – Criação, análise e otimização">
-            <ul className="space-y-2 list-disc list-inside">
-              <li>Como subir campanhas do Zero e Analisar Métricas</li>
-              <li>Como criar uma Campanha de Marketing para Músicos</li>
-            </ul>
-          </AccordionItem>
-
-           <div className="p-4 bg-slate-800/30 rounded-lg border border-slate-700 text-center text-slate-300">
-             <span className="font-semibold text-purple-400">+ Aulas Extras:</span> Anúncios no Spotify, Google Ads Avançado e YouTube Ads para Artistas.
-           </div>
+          {/* Aulas Extras Card */}
+          <div className="md:col-span-2 bg-gradient-to-r from-purple-900/20 to-pink-900/20 p-6 rounded-xl border border-purple-500/30 flex flex-col justify-between">
+            <div className="flex items-center gap-4 mb-4">
+              <div className="p-3 rounded-lg bg-gradient-to-tr from-purple-600 to-pink-500 flex-shrink-0">
+                <Star className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-white">Aulas Extras e Bônus Exclusivos</h3>
+            </div>
+            <p className="text-purple-200 mb-5 flex-grow">
+              Aprofunde seus conhecimentos com conteúdos avançados e ferramentas para impulsionar ainda mais sua carreira, incluindo dicas e hacks para plataformas específicas.
+            </p>
+            <AccordionItem title="Ver conteúdo extra">
+              <ul className="space-y-2 list-disc list-inside text-purple-200">
+                <li>Anúncios no Spotify: Chegue aos seus ouvintes</li>
+                <li>Google Ads Avançado: Hacks e técnicas secretas</li>
+                <li>YouTube Ads para Artistas: Promova seus clipes e shows</li>
+                <li>Estratégias de remarketing para músicos</li>
+              </ul>
+            </AccordionItem>
+          </div>
         </div>
       </Section>
 
@@ -329,10 +397,11 @@ const App: React.FC = () => {
       <Section darker>
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-10 items-center">
           <div className="w-32 h-32 md:w-48 md:h-48 bg-slate-800 rounded-full flex-shrink-0 overflow-hidden border-4 border-purple-500/30">
-            {/* Placeholder for image */}
-            <div className="w-full h-full bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center text-4xl">
-              🎸
-            </div>
+            <img 
+              src="https://i.imgur.com/J5eDh8f.jpeg" 
+              alt="Foto de perfil de Thiago, criador do curso Réssonancia" 
+              className="w-full h-full object-cover" 
+            />
           </div>
           <div className="flex-1 text-center md:text-left">
             <h3 className="text-2xl font-bold text-white mb-4">Conheça o Thiago</h3>
@@ -376,7 +445,7 @@ const App: React.FC = () => {
           </div>
 
           <Button fullWidth className="text-xl py-6 mb-6 bg-green-600 hover:bg-green-500 border-green-500/30 shadow-green-900/50">
-            QUERO LOTAR MINHA AGENDA
+            QUERO MINHA RÉSSONANCIA AGORA!
           </Button>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-8 pt-8 border-t border-slate-800">
@@ -438,7 +507,7 @@ const App: React.FC = () => {
             Quero transformar anúncios em fãs e shows
           </Button>
           <p className="mt-12 text-slate-600 text-sm">
-            © {new Date().getFullYear()} MúsicoAds. Todos os direitos reservados.
+            © {new Date().getFullYear()} Réssonancia. Todos os direitos reservados.
           </p>
         </div>
       </footer>
